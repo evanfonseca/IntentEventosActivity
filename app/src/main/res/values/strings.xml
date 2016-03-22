@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">IntentEventosActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="galeria">Galeria</string>
+    <string name="info">Info</string>
+    <string name="sair">Sair</string>
+    <string name="boasVindas">\"Seja Bem Vindo!\"</string>
+</resources>
