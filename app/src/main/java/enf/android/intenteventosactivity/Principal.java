@@ -1,5 +1,6 @@
 package enf.android.intenteventosactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class Principal extends AppCompatActivity {
+
+    String USER="";
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +24,22 @@ public class Principal extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Intent intent= getIntent();
+        Bundle b=intent.getExtras();
+
+        if(b!=null){
+            USER = (String) b.get("USER");
+        }
+
+
+        tv= (TextView) findViewById(R.id.textoPrincipal);
+
+
+        tv.append(" "+USER);
+
+
+
+
     }
 
     @Override
@@ -49,4 +63,31 @@ public class Principal extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void login(View v){
+
+
+        //Toast.makeText(getApplicationContext(),"Login cliked",Toast.LENGTH_LONG).show();
+        Intent intent =new Intent(this, Login.class);
+        startActivity(intent);
+
+
+
+    }
+
+    public void perfil(View v){
+        Intent intent =new Intent(this, Perfil.class);
+        intent.putExtra("USER", USER);
+        startActivity(intent);
+    }
+
+    public void info(View v){
+        Toast.makeText(getApplicationContext(),"Info cliked",Toast.LENGTH_LONG).show();
+    }
+
+    public void sair(View v){
+        Toast.makeText(getApplicationContext(),"Sair cliked",Toast.LENGTH_LONG).show();
+    }
+
 }
